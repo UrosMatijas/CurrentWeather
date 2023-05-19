@@ -44,9 +44,8 @@ def check_temp():
     temp_min_label.grid(row=5, column=0, sticky="w")
     feels_like_label = tkinter.Label(text=f"Max temperature: {data['main']['feels_like']}", font=("Helvetica", 12))
     feels_like_label.grid(row=6, column=0, sticky="w")
-    weather_label = tkinter.Label(text=f"{data['weather'][0]['main']} - {data['weather'][0]['description']}",
-                                  font=("Arial", 20))
-    weather_label.grid(row=7, column=0, sticky="w")
+    weather_label.config(text=f"{data['weather'][0]['main']} - {data['weather'][0]['description']}")
+
 
     clouds = data["clouds"]["all"]
     id = data["weather"][0]["id"]
@@ -90,6 +89,8 @@ sat_img = Image.open("venv/static/earth.jpg")
 img = ImageTk.PhotoImage(sat_img)
 img_cont = canv.create_image(100, 100, image=img)
 
+weather_label = tkinter.Label(text="", font=("Arial", 20))
+weather_label.grid(row=7, column=0, sticky="w")
 button = tkinter.Button(root, text="Check", font=("Helvetica", 15), command=check_temp)
 button.grid(row=2, column=1, sticky="w")
 
